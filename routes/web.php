@@ -1,4 +1,7 @@
+
 <?php
+use App\Http\Controllers\FormController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,3 +17,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/store', 'FormController@show')->name('show');
+Route::post('/store', 'FormController@create')->name('create');
