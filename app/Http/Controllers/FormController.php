@@ -37,7 +37,7 @@ class FormController extends Controller {
             'email' => 'required|email:rfc,dns',
         ]);
 
-        return redirect('/thank');
+        //return redirect('/thank');
     }
 }
 
