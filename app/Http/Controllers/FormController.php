@@ -11,9 +11,9 @@ class FormController extends Controller {
         return view('form', compact('forms'));
     }
 
-    public function ty() {
+    /*public function ty() {
         return view('thank');
-    }
+    }*/
 
     public function create(Request $request) {
 
