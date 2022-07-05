@@ -15,3 +15,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/demo-form','enquiryies@index');
+Route::post('/send','enquiryies@store');
