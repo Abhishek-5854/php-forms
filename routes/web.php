@@ -11,6 +11,9 @@
 |
 */
 
-Route::get('/1', function () {
+Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/', [PlansandpricingController::Class,'showform']);
+
+Route::post('/', [PlansandpricingController::Class,'showdata']);
