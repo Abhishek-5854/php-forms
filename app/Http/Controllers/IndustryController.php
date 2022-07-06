@@ -92,6 +92,7 @@ class IndustryController extends Controller
         $created_at = Carbon::now()->toDateTimeString();
         $updated_at = Carbon::now()->toDateTimeString();
 
+
         DB::select('call InsertData(?,?,?,?,?,?,?,?,?,?)',array($full_name ,$company_name ,$email_id ,$mobile_no ,$quer ,$ip_address ,$page_path ,$browser_details ,$created_at ,$updated_at));
 
         $sales = [
@@ -173,10 +174,14 @@ class IndustryController extends Controller
         // $industry_id = $request ->industry;
         // $industry_id = DB::select('call ViewIndustryID(?)',array($industry));
         $industrys = DB::select("call ViewIndustryID('$industry_name')");
+        $myStr = $request->mobile_no;
+        $contact_length = strlen($myStr);
+        $star ="***************";
+        $mobile_shorten = substr($myStr, 0, 5) . substr($star,5,$contact_length-5);
         
         // $updated_at = Carbon::now()->toDateTimeString();
         foreach($industrys as $industry){
-        DB::select('call InsertDownload(?,?,?,?,?,?,?,?)',array($full_name ,$email_id ,$mobile_no  ,$ip_address ,$page_path ,$browser_details ,$created_at ,$industry->industry_id));
+        DB::select('call InsertDownload(?,?,?,?,?,?,?,?,?)',array($full_name ,$email_id ,$mobile_no  ,$ip_address ,$page_path ,$browser_details ,$created_at ,$industry->industry_id,$mobile_shorten));
         }
         // $sales = [
         //     'email' =>request('email_id'),
