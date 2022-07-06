@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndustryController;
 
 
-Route::get('/1', function () {
+Route::get('/', function () {
     return view('welcome');
 });
 
