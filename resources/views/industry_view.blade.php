@@ -21,8 +21,8 @@
     <hr>
 
         <a href="{{ url("demo-form") }}" class="btn btn-primary"> Free 30 day Demo</a>
-        <a href="{{ url("guided-demo") }}" class="btn btn-primary"> Guided Demo</a>
-        <a href="" class="btn btn-primary"> Plans and Pricing</a>
+        <a href="{{ url("store") }}" class="btn btn-primary"> Guided Demo</a>
+        <a href="{{ url("plan") }}" class="btn btn-primary"> Plans and Pricing</a>
 
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal4">

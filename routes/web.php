@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 use App\Http\Controllers\IndustryController;
+use App\Http\Controllers\PlansandpricingController;
+
 
 
 Route::get('/1', function () {

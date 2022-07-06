@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\free_trial_user;
+use App\free_trial_user;
 use DB;
 
 class PlansandpricingController extends Controller
