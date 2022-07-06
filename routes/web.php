@@ -20,6 +20,11 @@ Route::get('/1', function () {
     return view('welcome');
 });
 
+Route::get('plan', [PlansandpricingController::Class,'showform']);
+
+Route::post('plan', [PlansandpricingController::Class,'showdata']);
+
+
 Route::get('/demo-form','enquiryies@index');
 Route::post('/send','enquiryies@store');
 
