@@ -17,8 +17,8 @@ class PlansandpricingController extends Controller
         'contact_number'=>'required|min:10|max:15',
         'username'=>'required|email:rfc,dns',
         'companyname'=>'required|max:35|alpha_num',
-        'ip'=>'required',
-        'terms'=>'required'
+        'ip'=>'accepted',
+        'terms'=>'accepted'
 
        ],
    [   'number_of_users.required'=>'Please enter number of users.' ,
@@ -27,8 +27,8 @@ class PlansandpricingController extends Controller
    'contact_number.required'=>'Please enter a mobile number.',
    'username.required'=>'Please enter an email address.',
    'companyname.required'=>'Please enter a company name.',
-   'ip.required'=>'Please select the checkbox.',
-   'terms.required'=>'Please check terms & condition, privacy policy & term of use checkbox.'
+   'ip.accepted'=>'Please select the checkbox.',
+   'terms.accepted'=>'Please check terms & condition, privacy policy & term of use checkbox.'
    
 ]
 );

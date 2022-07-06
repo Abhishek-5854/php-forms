@@ -66,7 +66,7 @@
   </div>
 
 <div class="form-check">
-  <input class="form-check-input" name="ip" type="checkbox" value="" id="defaultCheck1">
+  <input class="form-check-input" name="ip" type="checkbox"  id="defaultCheck1">
   <label class="form-check-label" for="defaultCheck1">
     
 I acknowledge that IP address and Email address are being logged for monitoring purpose.
@@ -74,7 +74,7 @@ I acknowledge that IP address and Email address are being logged for monitoring 
   <div style="color:red;">@error('ip'){{$message}} @enderror </div>
 </div>
 <div class="form-check">
-  <input class="form-check-input" name="terms"type="checkbox" value="" id="defaultCheck1">
+  <input class="form-check-input" name="terms"type="checkbox"  id="defaultCheck1">
   <label class="form-check-label" for="defaultCheck1">
   
 I have read and I agree to the privacy policy & terms of use
