@@ -1,4 +1,7 @@
+
 <?php
+use App\Http\Controllers\FormController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +21,10 @@ Route::get('/1', function () {
     return view('welcome');
 });
 
+
+Route::get('/store', 'FormController@show')->name('show');
+Route::post('/store', 'FormController@create')->name('create');
+
 Route::get('/', 'IndustryController@show');
 Route::get('main_page', 'IndustryController@show');
 Route::get('test', 'IndustryController@index');
@@ -26,4 +33,5 @@ Route::post('enquiry-form','IndustryController@enquiry');
 Route::post('download-form','IndustryController@download');
 Route::post('industry_view/download','IndustryController@download');
 Route::resource('shows', 'IndustryController');
+
 
