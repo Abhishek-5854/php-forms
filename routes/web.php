@@ -21,6 +21,10 @@ Route::get('/1', function () {
     return view('welcome');
 });
 
+Route::get('/demo-form','enquiryies@index');
+Route::post('/send','enquiryies@store');
+
+
 
 Route::get('/store', 'FormController@show')->name('show');
 Route::post('/store', 'FormController@create')->name('create');
@@ -33,5 +37,4 @@ Route::post('enquiry-form','IndustryController@enquiry');
 Route::post('download-form','IndustryController@download');
 Route::post('industry_view/download','IndustryController@download');
 Route::resource('shows', 'IndustryController');
-
 
