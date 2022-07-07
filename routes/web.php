@@ -13,19 +13,25 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndustryController;
+use App\Http\Controllers\PlansandpricingController;
+
 
 
 Route::get('/1', function () {
     return view('welcome');
 });
 
+Route::get('plan', [PlansandpricingController::Class,'showform']);
+
+Route::post('plan', [PlansandpricingController::Class,'showdata']);
+
+
 Route::get('/demo-form','enquiryies@index');
 Route::post('/send','enquiryies@store');
 
 
-
+Route::get('/guided-demo', 'FormController@show');
 Route::get('/store', 'FormController@show')->name('show');
 Route::post('/store', 'FormController@create')->name('create');
 

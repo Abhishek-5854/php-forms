@@ -7,8 +7,8 @@ use DB;
 
 class FormController extends Controller {
     public function show(){
-        $forms = Form::all();
-        return view('form', compact('forms'));
+        // $forms = Form::all();
+        return view('form');
     }
 
     /*public function ty() {
