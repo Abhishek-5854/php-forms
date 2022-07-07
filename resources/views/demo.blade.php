@@ -4,7 +4,7 @@
         <title>
             Form
         </title>
-        <meta charset="utf-8">
+          <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.4/themes/blitzer/jquery-ui.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -140,7 +140,7 @@
       <div class="col-md-4 inputGroupContainer">
       <div class="input-group">
           <span class="input-group-addon"><i class="bi bi-calendar-event-fill"></i></span>
-        <input name="scheduled_date" placeholder="E-Mail Address" class="form-control"  type="date">
+        <input name="scheduled_date" id="DisableWKEnds" placeholder="MM/DD/YYYY" class="form-control"  type="text">
       </div>
       <span class="text-danger">
         @error('scheduled_date')
@@ -155,7 +155,7 @@
       <div class="col-md-4 inputGroupContainer">
       <div class="input-group">
         <select name="scheduled_time_slot_id" class="form-control selectpicker" aria-label="Default select example">
-          <option selected>Open this select menu</option>
+          <option selected>Time Slot (IST)</option>
           <option value="1">10.00 am to 10.15 am</option>
           <option value="2">10.15 am to 10.30 am</option>
           <option value="3">10.30 am to 10.45 am</option>
@@ -223,6 +223,11 @@
 </fieldset>
 </form>
 </div><!-- /.container -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+{{-- External js --}}
+<script src={{asset('js/main.js')}}></script>
 
 </body>
 </html>
