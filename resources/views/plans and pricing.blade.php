@@ -15,7 +15,7 @@
  
 </head>
 <body>
-<form action="plan" method="POST">
+<form action="submit" method="POST">
   @csrf 
   
   <div class="form-group" >

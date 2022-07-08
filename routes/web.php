@@ -24,7 +24,7 @@ Route::get('/1', function () {
 
 Route::get('plan/{industry_name}', [PlansandpricingController::Class,'showform']);
 
-Route::post('plan', [PlansandpricingController::Class,'showdata']);
+Route::post('plan/submit', [PlansandpricingController::Class,'showdata']);
 
 
 Route::get('/demo-form','enquiryies@index');
