@@ -80,6 +80,7 @@
                         <input type="number" id="mobile_no" name="mobile_no" class="form-control" required="" maxlength="15" minlength="10" autocomplete="off">
                         <br>
                         </div>
+                        <input type = "hidden" name ="industry" value = "{{$industry_name}}" />
                         <div class="form-group">
                         <label for="exampleInputEmail1">Query</label>
                         <textarea name="quer" id="quer" class="form-control" required="" maxlength="2000" autofocus autocomplete="off"> </textarea>
