@@ -24,6 +24,11 @@
 
     <!-- Main CSS
     <link href="sass/main.css" rel="stylesheet" media="all">-->
+
+    <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.4/themes/blitzer/jquery-ui.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <style>
 
 /* ==========================================================================
@@ -682,7 +687,7 @@ input {
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Demo Date</label>
-                                    <input class="input--style-4" type="date" name="demo_date">
+                                    <input class="input--style-4" id="DisableWKEnds" type="text" name="demo_date">
                                 </div>
                             </div>
                             <div class="col-2">
@@ -720,23 +725,23 @@ input {
                                     <label class="label">Industry</label>
                                     <select type="varchar" name="industry">
                                     <option disabled="disabled" selected="selected">Choose option</option>
-                                    <option>Automotive</option>
-                                    <option>Banking</option>
-                                    <option>BPO</option>
-                                    <option>Education</option>
-                                    <option>Financial-services</option>
-                                    <option>Healthcare</option>
-                                    <option>Hotel</option>
-                                    <option>Import-Export</option>
-                                    <option>Insurance</option>
-                                    <option>IT</option>
-                                    <option>Jewellery</option>
-                                    <option>Logistics</option>
-                                    <option>Manufacturing</option>
-                                    <option>Media-Advertising</option>
-                                    <option>Real Estate</option>
-                                    <option>Travel</option>
-                                    <option>General</option>
+                                    <option value="1">automotive-crm</option>
+                                    <option value="2">banking-crm</option>
+                                    <option value="3">bpo-crm</option>
+                                    <option value="4">education-crm</option>
+                                    <option value="5">financial-services-crm</option>
+                                    <option value="6">healthcare-crm</option>
+                                    <option value="7">hotel-crm</option>
+                                    <option value="8">import-export-crm</option>
+                                    <option value="9">insurance-crm</option>
+                                    <option value="10">it-crm</option>
+                                    <option value="11">jewellery-crm</option>
+                                    <option value="12">logistics-crm</option>
+                                    <option value="13">manufacturing-crm</option>
+                                    <option value="14">media-advertising-crm</option>
+                                    <option value="15">real-estate-crm</option>
+                                    <option value="16">travel-crm</option>
+                                    <option value="17">general-crm</option>
                                     </select>
                                 </div>
                             </div>
@@ -802,6 +807,11 @@ input {
             </div>
         </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    {{-- External js --}}
+    <script src={{asset('js/main.js')}}></script>
 
     <!-- Jquery JS-->
     <!--<script src="/vendor/jquery/jquery.min.js"></script>-->
