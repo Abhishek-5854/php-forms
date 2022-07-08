@@ -53,7 +53,7 @@ class PlansandpricingController extends Controller
                 );
         }
  
-        return view('main_page');
+        return redirect('main_page')->with('status', 'Form Data Has Been inserted ');
 
     }
 

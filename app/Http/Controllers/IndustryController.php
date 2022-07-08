@@ -142,7 +142,7 @@ class IndustryController extends Controller
         // \Mail::to('sales@gmail.com')->send(new \App\Mail\SalesMail($sales));
         // \Mail::to($client['email'])->send(new \App\Mail\ClientMail($client));
 
-        return redirect('main_page')->with('status', 'Form Data Has Been inserted and');
+        return redirect('main_page')->with('status', 'Form Data Has Been inserted ');
     }
     public function download(Request $request)
     {
