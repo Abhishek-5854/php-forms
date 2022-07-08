@@ -45,9 +45,9 @@ DELIMITER ;
 
 
 DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertvalue`(number_of_users int(11), full_name varchar(100), contact_number varchar(20), username varchar(100), company_name varchar(100), enquiry_query text)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertvalue`(IN `number_of_users` INT(11), IN `full_name` VARCHAR(100), IN `contact_number` VARCHAR(20), IN `username` VARCHAR(100), IN `company_name` VARCHAR(100), IN `enquiry_query` TEXT, IN `industry_id` INT(20))
 BEGIN
-INSERT INTO free_trial_user(number_of_users, full_name , contact_number , username , company_name , enquiry_query, start_timestamp ) VALUES(number_of_users, full_name , contact_number , username , company_name , enquiry_query, CURRENT_TIMESTAMP);
+INSERT INTO free_trial_user(number_of_users, full_name , contact_number , username , company_name , enquiry_query, start_timestamp ,industry_id) VALUES(number_of_users, full_name , contact_number , username , company_name , enquiry_query, CURRENT_TIMESTAMP,industry_id);
 END$$
 DELIMITER ;
 

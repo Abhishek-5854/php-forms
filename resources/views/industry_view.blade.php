@@ -19,10 +19,9 @@
     <h1 class="display-3">Select below options</h1>
     <!-- <p class="lead"><strong>Please check your email</strong> to get details about the enquiry </p> -->
     <hr>
-
         <a href="{{ url("demo-form") }}" class="btn btn-primary"> Free 30 day Demo</a>
         <a href="{{ url("store") }}" class="btn btn-primary"> Guided Demo</a>
-        <a href="{{ url("plan") }}" class="btn btn-primary"> Plans and Pricing</a>
+        <a href="{{ url('plan/'.$industry_name) }}" class="btn btn-primary"> Plans and Pricing</a>
 
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal4">

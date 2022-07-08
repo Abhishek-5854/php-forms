@@ -22,7 +22,7 @@ Route::get('/1', function () {
     return view('welcome');
 });
 
-Route::get('plan', [PlansandpricingController::Class,'showform']);
+Route::get('plan/{industry_name}', [PlansandpricingController::Class,'showform']);
 
 Route::post('plan', [PlansandpricingController::Class,'showdata']);
 
