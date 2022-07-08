@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Industry;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
+use Jenssegers\Agent\Facades\Agent;
+use Stevebauman\Location\Facades\Location;
 use DB;
 
 class IndustryController extends Controller
@@ -84,16 +86,37 @@ class IndustryController extends Controller
         $company_name = $request->company_name;
         $email_id = $request->email_id;
         $mobile_no = $request->mobile_no;
+        $myStr = $request->mobile_no;
+        $contact_length = strlen($myStr);
+        $star ="***************";
+        $mobile_short = substr($myStr, 0, 5) . substr($star,5,$contact_length-5);
         $quer = $request->quer;
+        $mobile_encrypt="encrypted";
+        $industry_name = $request->industry;
         // $ip_address = request()->ip();
         $ip_address = $this->getIp(); 
         $page_path = parse_url( $_SERVER[ 'REQUEST_URI' ], PHP_URL_PATH );
         $browser_details = request()->userAgent();
         $created_at = Carbon::now()->toDateTimeString();
         $updated_at = Carbon::now()->toDateTimeString();
+        $industrys = DB::select("call ViewIndustryID('$industry_name')");
+        $device = Agent::device();
+        $os = Agent::platform();
+        $UserInfo= Location::get('103.102.29.60');
+        $location= $UserInfo->cityName;
+
+        
+        
 
 
-        DB::select('call InsertData(?,?,?,?,?,?,?,?,?,?)',array($full_name ,$company_name ,$email_id ,$mobile_no ,$quer ,$ip_address ,$page_path ,$browser_details ,$created_at ,$updated_at));
+        // DB::select('call InsertData(?,?,?,?,?,?,?,?,?,?)',array($full_name ,$company_name ,$email_id ,$mobile_no ,$quer ,$ip_address ,$page_path ,$browser_details ,$created_at ,$updated_at));
+        // DB::select('call InsertEnquiry(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',array($full_name ,$company_name ,$mobile_no ,$quer ,$ip_address ,$page_path ,$created_at ,$browser_details ,$mobile_short,$mobile_encrypt,$os,$device,$industry_id,$email_id,$location));
+
+        foreach($industrys as $industry){
+            DB::select('call InsertEnquiry(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',array($full_name ,$company_name ,$mobile_no ,$quer ,$ip_address ,$page_path ,$created_at ,$browser_details ,$mobile_short,$mobile_encrypt,$os,$device,$industry->industry_id,$email_id,$location));
+
+        }
+
 
         $sales = [
             'email' =>request('email_id'),
@@ -116,8 +139,8 @@ class IndustryController extends Controller
             'skype' =>'dquip.crm'
     
         ];
-        \Mail::to('sales@gmail.com')->send(new \App\Mail\SalesMail($sales));
-        \Mail::to($client['email'])->send(new \App\Mail\ClientMail($client));
+        // \Mail::to('sales@gmail.com')->send(new \App\Mail\SalesMail($sales));
+        // \Mail::to($client['email'])->send(new \App\Mail\ClientMail($client));
 
         return redirect('main_page')->with('status', 'Form Data Has Been inserted and');
     }
