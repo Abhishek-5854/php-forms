@@ -39,24 +39,26 @@ class PlansandpricingController extends Controller
         $username=$req->username;
         $companyname=$req->companyname;
         $enquiryquery=$req->enquiryquery;
-
+        $industry_name = $request->industry;
+        $industrys = DB::select("call ViewIndustryID('$industry_name')");
         //$p=new free_trial_user;
        // $p->full_name =$full_name;
         //$p->save();
         
   
-            
+        
+        foreach($industrys as $industry){
             DB::select(
-               'CALL insertvalue(?,?,?,?,?,?)',array($number_of_users,$full_name,$contact_number,$username,$companyname,$enquiryquery)
-            );
-          
-          
-              
-       
+                'CALL insertvalue(?,?,?,?,?,?,?)',array($number_of_users,$full_name,$contact_number,$username,$companyname,$enquiryquery,$industry->industry_id)
+                );
+        }
+ 
        
     }
-    function showform(){
+
+
+    function showform($industry_name){
         //print_r('post method');
-        return view('plans and pricing');
+        return view('plans and pricing', compact('industry_name'));
     }
 }

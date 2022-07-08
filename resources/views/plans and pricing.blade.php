@@ -44,6 +44,8 @@
     <input type="text" name="full_name"class="form-control" id="exampleFormControlInput1" >
     <div style="color:red;">@error('full_name'){{$message}} @enderror</div>
   </div>
+  <input type = "hidden" name ="industry" value = "{{$industry_name}}" />
+
   <div class="form-group">
     <label for="exampleFormControlInput1">Mobile No.</label>
     <input  class="form-control" name="contact_number"id="exampleFormControlInput1" >
