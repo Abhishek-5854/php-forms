@@ -102,7 +102,7 @@ class IndustryController extends Controller
         $industrys = DB::select("call ViewIndustryID('$industry_name')");
         $device = Agent::device();
         $os = Agent::platform();
-        $UserInfo= Location::get('103.102.29.60');
+        $UserInfo= Location::get();
         $location= $UserInfo->cityName;
 
         
