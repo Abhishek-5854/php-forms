@@ -18,15 +18,18 @@ class FormController extends Controller {
     public function create(Request $request) {
 
         $full_name = request("full_name");
-        $company_name = request("comp_name");
-        $contact_number = request("mobile");
+        $company_name = request("company_name");
+        $contact_number = request("phone");
+        $encrypted_contact_no = encrypt($request->phone);
         $username = request("email");
         $scheduled_date = request("demo_date");
         $scheduled_time_slot_id = request("time_slot");
         $client_ip = request()->ip();
         $client_browser = request()->header('User-Agent');
-                    
-        DB::select('CALL guided_demo(?,?,?,?,?,?,?,?)',array("$full_name", "$company_name", "$contact_number", "$username", "$scheduled_date", "$scheduled_time_slot_id", "$client_ip", "$client_browser"));
+        //$industry_name = request("industry");
+        //$industry_id = DB::select("call ViewIndustryID('$industry_name')");
+        $industry_id = request("industry");
+        DB::select('CALL guided_demo(?,?,?,?,?,?,?,?,?,?)',array("$full_name", "$company_name", "$contact_number", "$encrypted_contact_no", "$username", "$scheduled_date", "$scheduled_time_slot_id", "$client_ip", "$client_browser", "$industry_id"));
         
         $request->validate([
             'demo_date' => 'required',

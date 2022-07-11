@@ -14,11 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 use App\Http\Controllers\IndustryController;
+use App\Http\Controllers\PlansandpricingController;
+
 
 
 Route::get('/1', function () {
     return view('welcome');
 });
+
+Route::get('plan/{industry_name}', [PlansandpricingController::Class,'showform']);
+
+Route::post('plan/submit', [PlansandpricingController::Class,'showdata']);
+
 
 Route::get('/demo-form','enquiryies@index');
 Route::post('/send','enquiryies@store');
