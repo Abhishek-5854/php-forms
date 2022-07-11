@@ -20,6 +20,11 @@ class enquiryies extends Controller
         $username_shorten = substr(($req->username),0,5).''.'************';
         $password = $req->password;
         $contact_number = $req->contact_number; 
+        $encrypted_contact_no = encrypt($req->contact_number);
+        $myStr = $req->contact_number;
+        $contact_length = strlen($myStr);
+        $star ="***************";
+        $contact_shorten = substr($myStr, 0, 5) . substr($star,5,$contact_length-5);
         $industry_id = $req->industry_id;
         $scheduled_date = $req->scheduled_date;
         $scheduled_date = date('Y-m-d');
@@ -27,6 +32,7 @@ class enquiryies extends Controller
         // $path = parse_url( $_SERVER[ 'REQUEST_URI' ], PHP_URL_PATH );
         $client_browser = request()->userAgent();
         $client_ip = $req->ip();
+        $page_path = parse_url( $_SERVER[ 'REQUEST_URI' ], PHP_URL_PATH );
         
 
         $req -> validate([
@@ -73,7 +79,7 @@ class enquiryies extends Controller
         $hashedPassword = Hash::make($password);
         $username_encrypt = Crypt::encrypt( $req->username);
 
-        DB::select('call insertData(?,?,?,?,?,?,?,?,?,?,?,?)',[$full_name,$company_name,$username_shorten,$username_encrypt,$username,$hashedPassword,$contact_number,$industry_id,$scheduled_date,$scheduled_time_slot_id,$client_ip,$client_browser]);
+        DB::select('call insertData(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',[$full_name,$company_name,$username_shorten,$username_encrypt,$username,$hashedPassword,$contact_number,$industry_id,$scheduled_date,$scheduled_time_slot_id,$client_ip,$client_browser,$page_path,$contact_shorten,$encrypted_contact_no]);
         return redirect('demo-form')->with('success', 'Messsage is successfully send');
     }
     public function index()

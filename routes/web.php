@@ -28,7 +28,7 @@ Route::post('plan', [PlansandpricingController::Class,'showdata']);
 
 
 Route::get('/demo-form','enquiryies@index');
-Route::post('/send','enquiryies@store');
+Route::post('/mock-demo','enquiryies@store');
 
 
 Route::get('/guided-demo', 'FormController@show');
