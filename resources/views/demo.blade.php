@@ -18,7 +18,7 @@
 
 <div class="container">
 
-    <form class="well form-horizontal" action="/mock-demo" method="POST"  id="contact_form">
+    <form class="well form-horizontal" action="mock-demo" method="post"  id="contact_form">
       @csrf
 <fieldset>
 
