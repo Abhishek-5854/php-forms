@@ -73,7 +73,7 @@ class enquiryies extends Controller
         $hashedPassword = Hash::make($password);
         $username_encrypt = Crypt::encrypt( $req->username);
 
-        DB::select('call insertData(?,?,?,?,?,?,?,?,?,?,?,?)',[$full_name,$company_name,$username_shorten,$username_encrypt,$username,$hashedPassword,$contact_number,$industry_id,$scheduled_date,$scheduled_time_slot_id,$client_ip,$client_browser]);
+        DB::select('call insertData(?,?,?,?,?,?,?,?,?,?,?,?)',[$full_name,$company_name,$username,$hashedPassword,$contact_number,$industry_id,$scheduled_date,$scheduled_time_slot_id,$client_ip,$client_browser,$username_shorten,$username_encrypt]);
         return redirect('demo-form')->with('success', 'Messsage is successfully send');
     }
     public function index()

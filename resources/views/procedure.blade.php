@@ -45,9 +45,11 @@ DELIMITER ;
 
 
 DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertvalue`(IN `number_of_users` INT(11), IN `full_name` VARCHAR(100), IN `contact_number` VARCHAR(20), IN `username` VARCHAR(100), IN `company_name` VARCHAR(100), IN `enquiry_query` TEXT, IN `industry_id` INT(20))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertData`(IN `full_name` VARCHAR(100), IN `company_name` VARCHAR(100), IN `username` VARCHAR(100), IN `password` VARCHAR(255), IN `contact_number` VARCHAR(20), IN `industry_id` INT(11), IN `scheduled_date` DATE, IN `scheduled_time_slot_id` VARCHAR(20), IN `client_ip` VARCHAR(255), IN `client_browser` VARCHAR(255), IN `username_shorten` VARCHAR(255), IN `username_encrypt` TEXT)
 BEGIN
-INSERT INTO free_trial_user(number_of_users, full_name , contact_number , username , company_name , enquiry_query, start_timestamp ,industry_id) VALUES(number_of_users, full_name , contact_number , username , company_name , enquiry_query, CURRENT_TIMESTAMP,industry_id);
+
+INSERT INTO free_trial_user (full_name,company_name,username,password,contact_number,industry_id,scheduled_date,scheduled_time_slot_id,client_ip,client_browser,username_shorten,username_encrypt)
+ VALUES (full_name,company_name,username,password,contact_number,industry_id,scheduled_date,scheduled_time_slot_id,client_ip,client_browser,username_shorten,username_encrypt);
 END$$
 DELIMITER ;
 
