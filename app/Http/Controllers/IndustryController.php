@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use Jenssegers\Agent\Facades\Agent;
 use Stevebauman\Location\Facades\Location;
 use DB;
+use Crypt;
 
 class IndustryController extends Controller
 {
@@ -85,13 +86,21 @@ class IndustryController extends Controller
         $full_name = $request->full_name;
         $company_name = $request->company_name;
         $email_id = $request->email_id;
+
+        $username_encrypt = Crypt::encrypt( $request->email_id);
+        $username_shorten = substr(($request->email_id),0,5).''.'************';
+
         $mobile_no = $request->mobile_no;
+
         $myStr = $request->mobile_no;
         $contact_length = strlen($myStr);
         $star ="***************";
         $mobile_short = substr($myStr, 0, 5) . substr($star,5,$contact_length-5);
+        $mobile_encrypt = encrypt($request->mobile_no);
+
+
         $quer = $request->quer;
-        $mobile_encrypt="encrypted";
+        // $mobile_encrypt="encrypted";
         $industry_name = $request->industry;
         // $ip_address = request()->ip();
         $ip_address = $this->getIp(); 
@@ -113,7 +122,7 @@ class IndustryController extends Controller
         // DB::select('call InsertEnquiry(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',array($full_name ,$company_name ,$mobile_no ,$quer ,$ip_address ,$page_path ,$created_at ,$browser_details ,$mobile_short,$mobile_encrypt,$os,$device,$industry_id,$email_id,$location));
 
         foreach($industrys as $industry){
-            DB::select('call InsertEnquiry(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',array($full_name ,$company_name ,$mobile_no ,$quer ,$ip_address ,$page_path ,$created_at ,$browser_details ,$mobile_short,$mobile_encrypt,$os,$device,$industry->industry_id,$email_id,$location));
+            DB::select('call InsertEnquiry(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',array($full_name ,$company_name ,$mobile_no ,$quer ,$ip_address ,$page_path ,$created_at ,$browser_details ,$mobile_short,$mobile_encrypt,$os,$device,$industry->industry_id,$email_id,$location,$username_shorten,$username_encrypt));
 
         }
 
@@ -187,6 +196,10 @@ class IndustryController extends Controller
 
         $full_name = $request->full_name;
         $email_id = $request->email_id;
+
+        $username_encrypt = Crypt::encrypt( $request->email_id);
+        $username_shorten = substr(($request->email_id),0,5).''.'************';
+
         $mobile_no = $request->mobile_no;
         // $ip_address = request()->ip();
         $ip_address = $this->getIp(); 
@@ -197,14 +210,18 @@ class IndustryController extends Controller
         // $industry_id = $request ->industry;
         // $industry_id = DB::select('call ViewIndustryID(?)',array($industry));
         $industrys = DB::select("call ViewIndustryID('$industry_name')");
+
         $myStr = $request->mobile_no;
         $contact_length = strlen($myStr);
         $star ="***************";
+
         $mobile_shorten = substr($myStr, 0, 5) . substr($star,5,$contact_length-5);
+        $encrypted_contact_no = encrypt($request->mobile_no);
+
         
         // $updated_at = Carbon::now()->toDateTimeString();
         foreach($industrys as $industry){
-        DB::select('call InsertDownload(?,?,?,?,?,?,?,?,?)',array($full_name ,$email_id ,$mobile_no  ,$ip_address ,$page_path ,$browser_details ,$created_at ,$industry->industry_id,$mobile_shorten));
+        DB::select('call InsertDownload(?,?,?,?,?,?,?,?,?,?,?,?)',array($full_name ,$email_id ,$mobile_no  ,$ip_address ,$page_path ,$browser_details ,$created_at ,$industry->industry_id,$mobile_shorten,$encrypted_contact_no,$username_shorten,$username_encrypt));
         }
         // $sales = [
         //     'email' =>request('email_id'),
