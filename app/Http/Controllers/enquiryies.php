@@ -38,7 +38,6 @@ class enquiryies extends Controller
             "industry_id"=>"required",
             "scheduled_date" => "required|date",
             "scheduled_time_slot_id"=>"required",
-            "checkbox1"=>"required",
             "checkbox2"=>"required",
             "checkbox3"=>"required",
             
@@ -65,7 +64,6 @@ class enquiryies extends Controller
             "industry_id.required"=>"Please select the industry.",
             "scheduled_date.required"=>"Please select the date for demo.",
             "scheduled_time_slot_id.required"=>"Please select the Timeslot for your demo.",
-            "checkbox1.required"=>"Please select the checkbox.",
             "checkbox2.required"=>"Please check privacy policy & term of use checkbox.",
             "checkbox3.required"=>"Please select the checkbox.",
             
