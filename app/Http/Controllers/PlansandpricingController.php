@@ -39,7 +39,7 @@ class PlansandpricingController extends Controller
         $username=$req->username;
         $companyname=$req->companyname;
         $enquiryquery=$req->enquiryquery;
-        $industry_name = $request->industry;
+        $industry_name = $req->industry;
         $industrys = DB::select("call ViewIndustryID('$industry_name')");
         //$p=new free_trial_user;
        // $p->full_name =$full_name;
@@ -53,7 +53,8 @@ class PlansandpricingController extends Controller
                 );
         }
  
-       
+        return redirect('main_page')->with('status', 'Form Data Has Been inserted ');
+
     }
 
 
