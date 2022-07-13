@@ -72,3 +72,10 @@ BEGIN
 INSERT INTO `free_trial_user` ( `full_name`, `company_name`, `start_timestamp`, `username`,`username_shorten`,`username_encrypt`, `password`, `contact_code`, `contact_number`, `contact_shorten`, `encrypted_contact_no`, `landline_no`, `country_state_city`, `zipcode`, `address_line_1`, `address_line_2`, `address_line_3`, `click_page`, `click_section`, `click_button`, `click_location`, `action`, `source_id`, `industry_id`, `plan_id`, `number_of_users`, `reseller_id`, `isactivated`, `activation_timestamp`, `enquiry_query`, `enquiry_active_device`, `enquiry_active_os`, `enquiry_location`, `enquiry_browser`, `enquiry_ip_address`, `enquiry_count`, `is_enquiry`, `is_login`, `enquiry_type`, `crm_sync_flag`, `crm_sync_remarks`, `crm_sync_timestamp`, `modules`, `hosting`, `scheduled_date`, `scheduled_time_slot_id`, `scheduled_before_one_day_flag`, `scheduled_before_one_hour_flag`, `scheduled_on_same_day`, `no_of_users`, `auto_price_quoted`, `auto_price_plan`, `enquiry_from_page`, `client_ip`, `client_browser`, `is_mars_sync`) VALUES (f_name, c_name, created_at, email_id, username_shorten,username_encrypt,'', NULL, mobile_no, mobile_short, mobile_encrypt, '', '', '0', '', '', '', '', NULL, '', '', NULL, '0', industry_id, '0', NULL, '0', '0', '2022-07-08 07:12:19.000000', query, device, os, location, browser_details, ip_address, NULL, '1', '', 'enquiry', '0', NULL, NULL, '', '', '1800-01-01', '', '0', '0', '0', '', '0', '', page_path, ip_address, browser_details, '0');
 END$$
 DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertvalue`(number_of_users int(11), full_name varchar(100), contact_number varchar(20), username varchar(100), company_name varchar(100), enquiry_query text)
+BEGIN
+INSERT INTO free_trial_user(number_of_users, full_name , contact_number , username , company_name , enquiry_query, start_timestamp, client_ip, client_browser ) VALUES(number_of_users, full_name , contact_number , username , company_name , enquiry_query, CURRENT_TIMESTAMP, client_ip, client_browser);
+END$$
+DELIMITER ;
