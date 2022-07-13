@@ -40,6 +40,8 @@ class PlansandpricingController extends Controller
         $companyname=$req->companyname;
         $enquiryquery=$req->enquiryquery;
         $industry_name = $req->industry;
+        $client_ip = request()->ip();
+        $client_browser = request()->header('User-Agent');
         $industrys = DB::select("call ViewIndustryID('$industry_name')");
         //$p=new free_trial_user;
        // $p->full_name =$full_name;
