@@ -12,7 +12,6 @@ class PlansandpricingController extends Controller
         //print_r('get method');
        $validate=$req->validate([
         'number_of_users'=> 'required|integer',
-        'exampleRadios'=>'required',
         'full_name'=>'required|max:35\regex:/^[a-zA-Z][a-zA-Z]+[a-zA-Z]$/',
         'contact_number'=>'required|min:10|max:15',
         'username'=>'required|email:rfc,dns',
@@ -22,7 +21,6 @@ class PlansandpricingController extends Controller
 
        ],
    [   'number_of_users.required'=>'Please enter number of users.' ,
-   'exampleRadios.required'=>'Please select an option.',
    'full_name.required'=>'Please enter full name.',
    'contact_number.required'=>'Please enter a mobile number.',
    'username.required'=>'Please enter an email address.',
@@ -51,7 +49,7 @@ class PlansandpricingController extends Controller
         
         foreach($industrys as $industry){
             DB::select(
-                'CALL insertvalue(?,?,?,?,?,?,?)',array($number_of_users,$full_name,$contact_number,$username,$companyname,$enquiryquery,$industry->industry_id)
+                'CALL insertvalue(?,?,?,?,?,?,?,?,?)',array($number_of_users,$full_name,$contact_number,$username,$companyname,$enquiryquery,$industry->industry_id,$client_ip,$client_browser)
                 );
         }
  
