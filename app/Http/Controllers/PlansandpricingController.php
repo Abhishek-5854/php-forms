@@ -38,6 +38,12 @@ class PlansandpricingController extends Controller
         $companyname=$req->companyname;
         $enquiryquery=$req->enquiryquery;
         $industry_name = $req->industry;
+        $username_shorten = substr(($req->username),0,5).''.'************';
+        $encrypted_contact_no = encrypt($req->contact_number);
+        $username_encrypt = Crypt::encrypt( $req->username);
+        $contact_length = strlen($contact_number);
+        $star ="***************";
+        $contact_shorten = substr($contact_number, 0, 5) . substr($star,5,$contact_length-5);
         $client_ip = request()->ip();
         $client_browser = request()->header('User-Agent');
         $industrys = DB::select("call ViewIndustryID('$industry_name')");
@@ -49,7 +55,7 @@ class PlansandpricingController extends Controller
         
         foreach($industrys as $industry){
             DB::select(
-                'CALL insertvalue(?,?,?,?,?,?,?,?,?)',array($number_of_users,$full_name,$contact_number,$username,$companyname,$enquiryquery,$industry->industry_id,$client_ip,$client_browser)
+                'CALL insertvalue(?,?,?,?,?,?,?,?,?)',array($number_of_users,$full_name,$contact_number,$username,$companyname,$enquiryquery,$industry->industry_id,$client_ip,$client_browser,$contact_shorten, $encrypted_contact_no, $username_shorten, $username_encrypt)
                 );
         }
  
