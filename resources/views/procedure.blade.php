@@ -76,6 +76,6 @@ DELIMITER ;
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertvalue`(number_of_users int(11), full_name varchar(100), contact_number varchar(20), username varchar(100), company_name varchar(100), enquiry_query text)
 BEGIN
-INSERT INTO free_trial_user(number_of_users, full_name , contact_number , username , company_name , enquiry_query, start_timestamp, client_ip, client_browser ) VALUES(number_of_users, full_name , contact_number , username , company_name , enquiry_query, CURRENT_TIMESTAMP, client_ip, client_browser);
+INSERT INTO free_trial_user(number_of_users, full_name , contact_number , username , company_name , enquiry_query, start_timestamp, client_ip, client_browser, contact_shorten, encrypted_contact_no, username_shorten, username_encrypt ) VALUES(number_of_users, full_name , contact_number , username , company_name , enquiry_query, CURRENT_TIMESTAMP, client_ip, client_browser, contact_shorten, encrypted_contact_no,username_shorten, $username_encrypt);
 END$$
 DELIMITER ;
