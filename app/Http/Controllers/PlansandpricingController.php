@@ -55,7 +55,7 @@ class PlansandpricingController extends Controller
         
         foreach($industrys as $industry){
             DB::select(
-                'CALL insertvalue(?,?,?,?,?,?,?,?,?)',array($number_of_users,$full_name,$contact_number,$username,$companyname,$enquiryquery,$industry->industry_id,$client_ip,$client_browser,$contact_shorten, $encrypted_contact_no, $username_shorten, $username_encrypt)
+                'CALL insertvalue(?,?,?,?,?,?,?,?,?,?,?,?,?)',array($number_of_users,$full_name,$contact_number,$username,$companyname,$enquiryquery,$industry->industry_id,$client_ip,$client_browser,$contact_shorten, $encrypted_contact_no, $username_shorten, $username_encrypt)
                 );
         }
  
