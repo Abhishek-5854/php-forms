@@ -16,6 +16,7 @@ class enquiryies extends Controller
     {
         $full_name = $req->full_name;
         $company_name = $req->company_name;
+        $created_at = Carbon::now()->toDateTimeString();
         $username = $req->username;
         $username_shorten = substr(($req->username),0,5).''.'************';
         $password = $req->password;
@@ -79,7 +80,7 @@ class enquiryies extends Controller
         $hashedPassword = Hash::make($password);
         $username_encrypt = Crypt::encrypt( $req->username);
 
-        DB::select('call insertData(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',[$full_name,$company_name,$username_shorten,$username_encrypt,$username,$hashedPassword,$contact_number,$industry_id,$scheduled_date,$scheduled_time_slot_id,$client_ip,$client_browser,$page_path,$contact_shorten,$encrypted_contact_no]);
+        DB::select('call insertData(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',[$full_name,$company_name,$created_at,$username_shorten,$username_encrypt,$username,$hashedPassword,$contact_number,$industry_id,$scheduled_date,$scheduled_time_slot_id,$client_ip,$client_browser,$page_path,$contact_shorten,$encrypted_contact_no]);
         return redirect('demo-form')->with('success', 'Messsage is successfully send');
     }
     public function index()
